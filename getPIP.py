@@ -122,7 +122,7 @@ with open(output_file, 'w', newline='') as csvfile:
             if annotation["type"] == "gene":
                 if motif_match[2] == "+" and annotation["strand"] == "+":
                     gene_distance = annotation["start"] - motif_match[0]
-                elif annotation["strand"] == "-":
+                elif motif_match[2] == "-" and annotation["strand"] == "-":
                     gene_distance = motif_match[0] - annotation["end"]
                 if gene_distance > 0 and gene_distance < min_distance:
                     closest_gene = annotation
